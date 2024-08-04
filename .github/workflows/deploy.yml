@@ -13,6 +13,8 @@ jobs:
         run: npm install
       - name: Build with esbuild
         run: npm run build
+      - name: Package Lambda function
+        run: zip -r dist/index.zip dist/index.js
       # - name: Configure AWS Credentials
       #   uses: aws-actions/configure-aws-credentials@v1
       #   with:
