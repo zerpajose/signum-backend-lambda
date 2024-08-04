@@ -35,5 +35,4 @@ jobs:
           zip_file: dist/index.zip
           memory_size: 128
           timeout: 10
-          role: ${{ secrets.AWS_IAM_USER_ROLE }}
           runtime: nodejs20.x
