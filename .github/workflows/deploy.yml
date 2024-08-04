@@ -32,4 +32,8 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           function_name: ${{ secrets.AWS_LAMBDA_NAME }}
-          source: dist/index.js
+          zip_file: dist/index.zip
+          memory_size: 128
+          timeout: 10
+          role: ${{ secrets.AWS_IAM_ROLE_LAMBDA }}
+          runtime: nodejs20.x
