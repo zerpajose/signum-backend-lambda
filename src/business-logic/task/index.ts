@@ -6,9 +6,9 @@ export async function indexTask() {
   const input: ScanCommandInput = {
     TableName: "Task",
     Limit: limit,
-    FilterExpression: "status <> :status",
+    FilterExpression: "state <> :state",
     ExpressionAttributeValues: {
-      ":status": { "S": 'DONE' },
+      ":state": { "S": 'DONE' },
     },
   }
   
