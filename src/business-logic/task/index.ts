@@ -14,5 +14,5 @@ export async function indexTask() {
   
   const command = new ScanCommand(input);
   const result = await documentClient.send(command);
-  return result;
+  return result.Items;
 }
