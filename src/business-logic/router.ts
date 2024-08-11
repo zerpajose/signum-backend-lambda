@@ -8,14 +8,14 @@ export async function router(event: APIGatewayEvent) {
     throw new Error("Missing request path");
   }
 
-  const { httpMethod, path } = event;
+  const { httpMethod, path, queryStringParameters } = event;
 
   const paths = path.split("/");
   const resource = paths[1];
   const parameter = paths[2];
 
   if (resource === "task") {
-    if (parameter === undefined) {
+    if (parameter === undefined && queryStringParameters === undefined) {
       switch (httpMethod) {
         case "POST":
           return createTask(event);
