@@ -3,19 +3,19 @@ import { GetItemCommand, GetItemCommandInput } from "@aws-sdk/client-dynamodb";
 import { documentClient } from "../../config/dynamodb";
 
 export async function getTask(event: APIGatewayEvent) {
-  const { path } = event;
+  const { queryStringParameters } = event;
 
-  const paths = path.split("/");
-  const parameter = paths[2];
+  // const paths = path.split("/");
+  // const parameter = paths[2];
 
-  if(!parameter) {
+  if(!queryStringParameters || !queryStringParameters.taskId) {
     throw new Error("Missing request path parameters");
   }
 
   const input: GetItemCommandInput = {
     TableName: "Task",
     Key: {
-      'taskId': { S: parameter }
+      'taskId': { S: queryStringParameters.taskId },
     },
   }
   
