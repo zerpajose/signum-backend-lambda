@@ -13,7 +13,6 @@ export async function router(event: APIGatewayEvent) {
 
   const paths = path.split("/");
   const resource = paths[1];
-  const parameter = paths[2];
 
   if (resource === "task") {
     if (!queryStringParameters) {

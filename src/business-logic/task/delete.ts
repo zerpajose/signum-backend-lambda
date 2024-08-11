@@ -17,6 +17,6 @@ export async function deleteTask(event: APIGatewayEvent) {
   }
   
   const command = new DeleteItemCommand(input);
-  const result = await documentClient.send(command);
-  return result.Attributes;
+  await documentClient.send(command);
+  return { success: true };
 }
