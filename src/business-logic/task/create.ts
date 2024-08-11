@@ -29,5 +29,5 @@ export async function createTask(event: APIGatewayEvent) {
   
   const command = new PutItemCommand(input);
   const result = await documentClient.send(command);
-  return result;
+  return result.Attributes;
 }
