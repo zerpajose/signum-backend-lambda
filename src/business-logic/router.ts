@@ -1,6 +1,7 @@
 import { APIGatewayEvent } from "aws-lambda";
 import { createTask } from "./task/create";
 import { indexTask } from "./task/index";
+import { getTask } from "./task/get";
 
 export async function router(event: APIGatewayEvent) {
   if(!event.path) {
@@ -23,19 +24,18 @@ export async function router(event: APIGatewayEvent) {
         default:
           throw new Error("Invalid method");
       }
-    }
-    // else {
-    //   switch (httpMethod) {
-    //     case "GET":
-    //       return getTask(event);
+    } else {
+       switch (httpMethod) {
+         case "GET":
+           return getTask(event);
     //     case "PUT":
     //       return updateTask(event);
     //     case "DELETE":
     //       return deleteTask(event);
-    //     default:
-    //       throw new Error("Invalid method");
-    //   }
-    // }
+         default:
+           throw new Error("Invalid method");
+      }
+    }
   }
 }
 
