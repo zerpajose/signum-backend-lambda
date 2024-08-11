@@ -3,6 +3,7 @@ import { createTask } from "./task/create";
 import { indexTask } from "./task/index";
 import { getTask } from "./task/get";
 import { deleteTask } from "./task/delete";
+import { updateTask } from "./task/update";
 
 export async function router(event: APIGatewayEvent) {
   if(!event.path) {
@@ -28,8 +29,8 @@ export async function router(event: APIGatewayEvent) {
        switch (httpMethod) {
          case "GET":
            return getTask(event);
-    //     case "PUT":
-    //       return updateTask(event);
+         case "PUT":
+           return updateTask(event);
          case "DELETE":
            return deleteTask(event);
          default:
@@ -38,10 +39,3 @@ export async function router(event: APIGatewayEvent) {
     }
   }
 }
-
-// Task
-// createTask (POST) /task { title, description, stage }
-// getTask (GET) /task/1
-// indexTasks (GET) /task
-// updateTask (PUT) /task/1 { title, description, stage }
-// deleteTask (DELETE) /task/1
