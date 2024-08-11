@@ -14,7 +14,7 @@ export async function router(event: APIGatewayEvent) {
   const parameter = paths[2];
 
   if (resource === "task") {
-    if (parameter !== undefined) {
+    if (parameter === undefined) {
       switch (httpMethod) {
         case "POST":
           return createTask(event);
