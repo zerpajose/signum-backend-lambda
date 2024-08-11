@@ -2,6 +2,7 @@ import { APIGatewayEvent } from "aws-lambda";
 import { router } from "./business-logic/router";
   
 export const handler = async (event: APIGatewayEvent) => {
+  console.log(event);
   try {
     const result = await router(event);
     const response = {
