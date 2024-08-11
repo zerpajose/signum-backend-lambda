@@ -22,10 +22,11 @@ export async function updateTask(event: APIGatewayEvent) {
     UpdateExpression:
       'SET title=:title, description=:description, stage=:stage',
     ExpressionAttributeValues: {
-      ':title': title,
-      ':description': description,
-      ':stage': stage,
+      ':title': { S: title },
+      ':description': { S: description },
+      ':stage': { S: stage },
     },
+    ReturnValues: "ALL_NEW",
   };
   
   const command = new UpdateItemCommand(input);
