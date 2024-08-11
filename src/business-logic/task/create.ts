@@ -8,7 +8,7 @@ export async function createTask(event: APIGatewayEvent) {
     throw new Error("Missing request body");
   }
 
-  const { title, description, state } = JSON.parse(event.body);
+  const { title, description, stage } = JSON.parse(event.body);
   const input = {
     "TableName": "Task",
     "Item": {
@@ -21,8 +21,8 @@ export async function createTask(event: APIGatewayEvent) {
       "description": {
         "S": description,
       },
-      "state": {
-        "S": state,
+      "stage": {
+        "S": stage,
       },
     },
   };

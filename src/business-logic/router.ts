@@ -40,8 +40,8 @@ export async function router(event: APIGatewayEvent) {
 }
 
 // Task
-// createTask (POST) /task { title, description, state }
+// createTask (POST) /task { title, description, stage }
 // getTask (GET) /task/1
 // indexTasks (GET) /task
-// updateTask (PUT) /task/1 { title, description, state }
+// updateTask (PUT) /task/1 { title, description, stage }
 // deleteTask (DELETE) /task/1
