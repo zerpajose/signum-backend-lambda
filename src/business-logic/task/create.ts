@@ -8,12 +8,14 @@ export async function createTask(event: APIGatewayEvent) {
     throw new Error("Missing request body");
   }
 
+  const uuid = uuidv4();
   const { title, description, stage } = JSON.parse(event.body);
+
   const input = {
     "TableName": "Task",
     "Item": {
       "taskId": {
-        "S": uuidv4(),
+        "S": uuid,
       },
       "title": {
         "S": title,
@@ -29,5 +31,9 @@ export async function createTask(event: APIGatewayEvent) {
   
   const command = new PutItemCommand(input);
   const result = await documentClient.send(command);
-  return result.Attributes;
+
+  return {
+    taskId: uuid,
+    requestId: result.$metadata.requestId,
+  };
 }
